@@ -11,7 +11,7 @@ import os
 
 import pickle
 import folder_paths
-
+from ultralytics.utils.loss import v8DetectionLoss
 
 orig_torch_load = torch.load
 
@@ -216,7 +216,7 @@ try:
         aliasYOLOv10DetectionModel.__module__ = "ultralytics.nn.tasks"
         aliasYOLOv10DetectionModel.__name__ = "YOLOv10DetectionModel"
 
-        aliasv10DetectLoss = type("v10DetectLoss", (loss_modules.E2EDetectLoss,), {})
+        aliasv10DetectLoss = type("v10DetectLoss", (v8DetectionLoss,), {})
         aliasv10DetectLoss.__name__ = "v10DetectLoss"
         aliasv10DetectLoss.__module__ = "ultralytics.utils.loss"
 
